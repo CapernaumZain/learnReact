@@ -180,7 +180,70 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
 (React并不会绑定事件在每一个具体的元素身上,而是采用事件代理的模式绑定在根节点上)
 
 !十、ref的应用
+1、写法 xxx=React.createRef()（声明变量,并在标签中用ref={this.xxx}进行使用）。
 
+
+!十一、状态初体验！！！！
+?import React, { Component } from 'react'
+
+?export default class header extends Component {
+  ?inputValueRef = React.createRef()
+  *定义状态(ps:必须为state)
+  ?state = {
+    ?headerState:'收藏'
+  }
+  ?render () {
+    ?return (
+      ?<div>
+        ?<button onClick={
+          ?() => {
+            ?this.Click()
+          }
+        }>
+        *状态改变,按钮显示改变
+        ?{this.state.headerState?'收藏':'取消收藏'}
+        ?</button>
+        ?<div>这是header这是header这是header这是header</div>
+      ?</div>
+    )
+  }
+  ?Click () {
+  *使用点击函数改变状态
+    ?this.setState({
+      ?headerState:!this.state.headerState
+    })
+  }
+}
+1、组件内部特有的数据载体,改变数据,页面更新。
+2、使用状态的目的就是为了在不同的状态下使组件的显示不同(自己管理)。
+
+!十二、列表渲染
+1、遍历数组
+*使用map函数
+?import React, { Component } from 'react'
+
+?state={
+  ?list:['今天','明天','后天']
+}
+?export default class center extends Component {
+  ?render() {
+    ?const newList=this.state.list.map(()=><li key={item}>{item}</li>)
+    ?return (
+      ?<div>
+      ?<div>
+      ?<ul>
+        ?{newList}
+      ?</ul>
+      ?</div>
+      ?</div>
+    )
+  }
+}
+2、使用key值
+*为了列表的复用和重排,提高性能。
+
+!十三、案例-todolist增加、删除
+*新增使用ref删除使用splice
 
 
 

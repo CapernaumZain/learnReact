@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 
 export default class center extends Component {
+  state = {
+    list:['今天','明天','后天']
+  }
   render () {
     const centerStyle = {
       backgroundColor: 'green',
       textAlign: 'center',
-      color:'white'
+      color: 'white',
+      marginTop: '24px'
     }
+    const newList = this.state.list.map(item => <li key={item}>{item}</li>)
     return (
       <div style={centerStyle}>
-        <div>这是center</div>
+        <div><ul>{newList}</ul></div>
         <div>这是center</div>
         <div>这是center</div>
         <div>这是center</div>
