@@ -12,7 +12,7 @@ export default class header extends Component {
     }
     return (
       <div style={headerStyle}>
-        <div>这是header</div>
+        <div>这是header这是header这是header这是header</div>
       </div>
     )
   }
