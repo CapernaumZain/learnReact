@@ -4,11 +4,14 @@
 1.声明式设计-(想做什么,直接告诉它,剩下的渲染交给react)。
 2.高效-React通过对DOM(虚拟DOM)的模拟,最大限度地减少与DOM的交互。
 3.灵活-React可以与已知的库或框架很好地配合。
-4.JSX-JSX是JavaScript语法的扩展。用babel进行解析。
+4.JSX-React使用JSX语法来描述UI组件,这种语法类似于HTML,但是它可以嵌入JavaScript表达式,使得编写React组件更加方便和灵活。用babel进行解析。
 5.组件-通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。（复用）
 6.单向响应的数据流- React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。
+React使用单向数据流来管理组件状态,从而简化了应用程序的数据管理和状态更新。这种数据流也使得React组件更易于调试和测试
+
+总的来说,React具有组件化开发、虚拟DOM、JSX语法、单向数据流、生命周期和React Hooks等特性,这些特性使得React在构建用户界面方面变得更加高效、灵活和易于维护。
 *2、虚拟DOM
-1.传统的dom更新需要手动操作DOM,从而引起重排和回流,影响浏览器的性能。
+1.传统的DOM更新需要手动操作DOM,从而引起重排和回流,影响浏览器的性能。
 2.React根据后端返回的数据,先将数据放入虚拟DOM中,若数据发生改变,则与虚拟DOM数据进行对比,将增删改的数据进行操作,未改变的数据不受影响。
 
 !二、React脚手架(create-react-app)
@@ -47,7 +50,7 @@ TODO:PS:若npm安装失败。
   )
 TODO: JSX== JS+XML(render中的内容属于xml结构)
 
-!四、JSX语法原理(由Babel提供的JSX编译器编译为js代码由浏览器执行)
+!四、JSX语法原理(由Babel提供的JSX编译器编译为js,代码由浏览器执行)
 
 !五、组件的创建(类组件)
 1.在src文件夹中创建components文件夹。
@@ -104,7 +107,7 @@ TODO:index.js中导入APP必须大写首字母
 }
 
 !八、组件样式
-*React推荐我们使用行内样式，因为React觉得每一个组件都是一个独立的整体
+*React推荐我们使用行内样式,因为React觉得每一个组件都是一个独立的整体
 ?import React, { Component } from 'react'
 
 ?export default class App extends Component {
@@ -143,20 +146,13 @@ TODO:index.js中导入APP必须大写首字母
       ?<div>
         ?<input/>
         *事件绑定写法1(函数不多推荐,this指向问题)
-        ?<button onClick={
-          ?()=>{
-          ?console.log('click','如果处理函数过多,则不适用!')
-        ?}}>
-        ?</button>
+        ?<button onClick={()=>{ console.log('click','如果处理函数过多,则不适用!')}}></button>
         *事件绑定写法2(不推荐)
         ?<button onClick={this.handleClick2.bind(this)}></button>
         *事件绑定写法3(比较推荐,this指向问题)
         ?<button onClick={this.handleClick3}></button>
         *事件绑定写法4(推介写法,this指向问题&传参适用)
-        ?<button onClick={
-          ?()=>{ this.handleClick4()}
-        ?}>
-        ?</button>
+        <button onClick={()=>{ this.handleClick4()}}></button>
       ?</div>
       ?</div>
     )
@@ -190,11 +186,12 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
   ?inputValueRef = React.createRef()
   *定义状态(ps:必须为state)
   ?state = {
-    ?headerState:'收藏'
+    ?headerState:true
   }
   ?render () {
     ?return (
       ?<div>
+      ?<input type="text" ref={this.inputValueRef}></input>
         ?<button onClick={
           ?() => {
             ?this.Click()
@@ -208,7 +205,9 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
     )
   }
   ?Click () {
-  *使用点击函数改变状态
+    *访问Refs
+    ?const refVlaues=this.inputValueRef.current
+    *使用点击函数改变状态
     ?this.setState({
       ?headerState:!this.state.headerState
     })
@@ -255,6 +254,24 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
 <span dangerouslySetInnerHTML={__html:item.mytext}></span>
 
 !十六、选项卡案例
+1、数据请求(利用axios-npm i axios)
+
+  ?import axios from 'axios'
+
+  ?axios.get(post\post\put)({
+    ?url:'',
+    ?method:'get',
+    ?headers:{
+      ?X-Client-Info: {"a":"3000","ch":"1002","v":"5.2.1","e":"167644485072395968741377","bc":"110100"}
+      ?X-Host: mall.film-ticket.cinema.list
+        }
+    ?}).then(res=>{
+      ?console.log(res,'res')
+    ?}).catch(err=>{
+      ?console.log(err,'err')
+    ?})
+
+
 
 
 

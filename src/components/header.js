@@ -28,7 +28,6 @@ export default class header extends Component {
     )
   }
   Click () {
-    console.log('this.$refs.inputValue', this.inputValueRef.current.value);
     this.setState({
       headerStateShow:!this.state.headerStateShow
     })
