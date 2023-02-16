@@ -33,11 +33,10 @@ export default class App extends Component {
     }
   }
   render () {
-
     return (
       <div style={{height:'60px'}}>
       {this.which()}
-        <ul style={{ backgroundColor:'red'}}>
+        <ul style={{ backgroundColor:'white'}}>
           {this.state.list.map((item,index) =>
             <li key={item.id} className={this.state.current === index ? 'active' : ''} onClick={() => {
               this.handleClick(index)

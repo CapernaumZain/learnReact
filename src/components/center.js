@@ -70,6 +70,7 @@ export default class center extends Component {
     const oneTitle = {
       padding: '10px',
       fontSize: '20px',
+      display:'flex'
     }
     const twoTitle = {
         flex:1
@@ -78,8 +79,13 @@ export default class center extends Component {
       /*!Header And Center*/
       <div>
     {/*Header*/}
-        <div style={{width:'100%',position:'fixed',top: '0',zIndex: '1000',backgroundColor:'red',height:'80px'}}>
-          <div style={oneTitle}>影院</div>
+        <div style={{width:'100%',position:'fixed',top: '0',zIndex: '1000',backgroundColor:'white',height:'80px'}}>
+          <div style={oneTitle}>
+            <span style={{flex:1}}>北京</span>
+            <span style={{flex:8}}>影院</span>
+            <input style={{ flex: 1,borderRadius:'12px',placeholder:'请输入影院信息' }}></input>
+          </div>
+          <hr/>
           <div style={{ display: 'flex' }}><span style={twoTitle}>全城</span><span style={twoTitle}>APP订票</span><span style={twoTitle}>最近去过</span></div>
         </div>
       {/*Center*/}

@@ -258,8 +258,8 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
 
   ?import axios from 'axios'
 
-  ?axios.get(post\post\put)({
-    ?url:'',
+  ?axios(post\post\put)({
+    ?url:'https://m.maizuo.com/gateway?cityId=110100&ticketFlag=1&k=929717',
     ?method:'get',
     ?headers:{
       ?X-Client-Info: {"a":"3000","ch":"1002","v":"5.2.1","e":"167644485072395968741377","bc":"110100"}
@@ -270,6 +270,66 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
     ?}).catch(err=>{
       ?console.log(err,'err')
     ?})
+2、搜索过滤数据(利用filter过滤函数)
+  eg:
+    ?var arr =['aaa','abc','bcc']
+    ?var newarr = arr.filter(item=>item.includes('b'))
+
+    ?console.log(newarr)
+
+    TODO:过滤数据对源数据没有影响！
+
+!十六、setState同步/异步
+TODO:面试题:连续多次调用setState()之后会发生什么？
+TODO:setState处于异步更新状态
+?this.setState({
+  ?count:this.state.count+1
+  ?},()=>{
+    *状态和真实DOM已经更新完了
+  ?console.log(this .state.count)
+  })
+TODO:1、setstate处在同步的逻辑中,setstate处在异步的逻辑中,异步更新状态,更新真实dom同步更新状态,同步更新真实dom。
+TODO:2、setstate 接受第二个参数， 第二个参数是回调函数,状态和dom更新完后就会被触发。
+
+!十七、betterScroll(列表平滑滚动效果)
+ ?npm i better-scroll
+ ?import BetterScrall from 'better-scroll'
+ ?new BetterScrall('.divClassName')
+
+ !十八、属性(props)实现组件【复用】以及组件之间的【通信】
+ 1、复用
+  ①、原始用法:this.props.title可实现父组件的title值。
+  ②、解构用法:let {title,leftShow} = this.props;
+
+import React, { Component } from 'react'
+
+export default class app extends Component {
+  render() {
+    let {title,leftShow} = this.props;
+    return (
+      <div>{title}</div>
+     {leftShow&&<div>leftShow</div>}
+    )
+  }
+}
+2、属性验证
+ ①、验证类属性
+  Navbar.propTypes={
+    title:验证是不是字符串的方法,
+    leftShow:验证是不是bool的方法
+  }
+  使用小模块进行验证：
+    import jnPropsTypes form 'prop-types'
+TODO:类属性
+  static【放入类函数中】.propTypes={
+    title:jnPropsTypes.string,
+    leftShow:jnPropsTypes.bool
+  }
+ TODO:类属性默认值
+  static【放入类函数中】.defaultProps={
+    leftShow:true
+  }
+
 
 
 
