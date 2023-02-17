@@ -298,13 +298,14 @@ TODO:2、setstate 接受第二个参数， 第二个参数是回调函数,状态
 
  !十八、属性(props)实现组件【复用】以及组件之间的【通信】
  1、复用
-  ①、原始用法:this.props.title可实现父组件的title值。
+  ①、原始用法:this.props.title可实现获取父组件的title值。
   ②、解构用法:let {title,leftShow} = this.props;
 
 import React, { Component } from 'react'
 
 export default class app extends Component {
   render() {
+    *解构用法
     let {title,leftShow} = this.props;
     return (
       <div>{title}</div>
@@ -329,7 +330,59 @@ TODO:类属性
   static【放入类函数中】.defaultProps={
     leftShow:true
   }
+*属性和状态
+?相似点:
+*都是纯is对象,都会触发render更新,都具有确定性 (状态/属性相同，结果相同)
+?不同点:
+*1.属性能从父组件获取，状态不能
+*2.属性可以由父组件修改，状态不能
+*3.属性能在内部设置默认值，状态也可以，设置方式不一样
+*4.属性不在组件内部修改，状态要在组件内部修改
+*5.属性能设置子组件初始值，状态不可以
+*6.属性可以修改子组件的值，状态不可以
+TODO:尽量多写无状态组件,少写状态组件。(可降低代码的维护难度,增强组件的可复用性)
 
+!十九、表单的受控与非受控-狭义(广义:是否被传递的props控制)
+1、非受控组件
+  import React, { Component } from 'react'
+
+  export default class App extends Component {
+    myuserName= this.React.createRef()
+  render() {
+    return (
+      <div>
+      <h1>登录页</h1>
+        <input type="text" ref={this.myuserName}/>
+        <button onClick={()=>{this.login()}}>登录</button>
+        <button onClick={()=>{this.myuserName.current.value=''}}>重置</button>
+      </div>
+      *需求：在输入框之默认有一个值,可使用value="zhangjinning"实现,但无法自行输入值(这便是非受控行为)。此时将value改为defaultValue即可更改
+    )
+  }
+}
+2、受控组件(推荐使用)
+import React, { Component } from 'react'
+
+  export default class App extends Component {
+    state={
+      userName:'zhangjinning'
+    }
+  render() {
+    return (
+      <div>
+      <h1>登录页</h1>
+        <input type="text" value={this.state.userName} onChange={(evt)=>{
+         this.setState({
+          userName:event.target.value
+         })
+        }}/>
+        <button onClick={()=>{}}>登录</button>
+        <button onClick={()=>{}}>重置</button>
+      </div>
+    )
+  }
+  }
+3、受控写法
 
 
 
