@@ -8,7 +8,7 @@
 5.组件-通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。（复用）
 6.单向响应的数据流- React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。
 React使用单向数据流来管理组件状态,从而简化了应用程序的数据管理和状态更新。这种数据流也使得React组件更易于调试和测试
-
+w
 总的来说,React具有组件化开发、虚拟DOM、JSX语法、单向数据流、生命周期和React Hooks等特性,这些特性使得React在构建用户界面方面变得更加高效、灵活和易于维护。
 *2、虚拟DOM
 1.传统的DOM更新需要手动操作DOM,从而引起重排和回流,影响浏览器的性能。
@@ -93,6 +93,7 @@ TODO:index.js中导入APP必须大写首字母
   }
 }
 *嵌套函数式组件
+TODO:函数式组件的简写
 ?const Center =()=><div><p>嵌套的Center函数式组件</p></div>
 
 ?export default class App extends Component {
@@ -177,7 +178,6 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
 
 !十、ref的应用
 1、写法 xxx=React.createRef()（声明变量,并在标签中用ref={this.xxx}进行使用）。
-
 
 !十一、状态初体验！！！！
 ?import React, { Component } from 'react'
@@ -274,7 +274,6 @@ TODO:===面试题===React绑定事件跟原生绑定事件的区别?
   eg:
     ?var arr =['aaa','abc','bcc']
     ?var newarr = arr.filter(item=>item.includes('b'))
-
     ?console.log(newarr)
 
     TODO:过滤数据对源数据没有影响！
@@ -298,8 +297,10 @@ TODO:2、setstate 接受第二个参数， 第二个参数是回调函数,状态
 
  !十八、属性(props)实现组件【复用】以及组件之间的【通信】
  1、复用
-  ①、原始用法:this.props.title可实现获取父组件的title值。
-  ②、解构用法:let {title,leftShow} = this.props;
+  *①、原始用法:
+  this.props.title可实现获取父组件的title值。
+  *②、解构用法:
+  let {title,leftShow} = this.props;
 
 import React, { Component } from 'react'
 
