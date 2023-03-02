@@ -287,8 +287,9 @@ TODO:setState处于异步更新状态
     *状态和真实DOM已经更新完了
   ?console.log(this .state.count)
   })
-TODO:1、setstate处在同步的逻辑中,setstate处在异步的逻辑中,异步更新状态,更新真实dom同步更新状态,同步更新真实dom。
-TODO:2、setstate 接受第二个参数， 第二个参数是回调函数,状态和dom更新完后就会被触发。
+TODO:1、setstate处在同步的逻辑中,异步更新状态,更新真实dom。
+TODO:2、setstate处在异步的逻辑中,同步更新状态,同步更新真实dom。
+TODO:setstate接受第二个参数,第二个参数是回调函数,状态和dom更新完后就会被触发。
 
 !十七、betterScroll(列表平滑滚动效果)
  ?npm i better-scroll
@@ -392,8 +393,10 @@ import React, { Component } from 'react'
 !二十二、非父子组件通信方式
   1、状态提升(中间人模式)
     React中的状态提升概括来说,就是将多个组件需要共享的状态提升到它们最近的父组件上.在父组件上改变这个状态然后通过props分发给子组件。
-  2、发布订阅模式实现
+  2、发布订阅模式实现(推荐)
+    并非react特有,js中为了实现两个不同模块通信的一种功能
   3、content状态树传参
+
 
 
 

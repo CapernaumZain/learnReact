@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import MoviesList from './电影列表组件'
 
 export default class App extends Component {
-  constructor() {
-    super()
-    this.state = {
+    state = {
       moviesData: []
     }
+  constructor() {
+    super()
     axios({
         url: 'https://m.maizuo.com/gateway?cityId=110100&ticketFlag=1&k=929717',
         headers:{
@@ -21,16 +20,31 @@ export default class App extends Component {
       })
     })
   }
-  render() {
+  render () {
     return (
       <div>
         {
-           //eslint-disable-next-line
-          this.state.moviesData.map((item,index)=> {
-            <MoviesList key={index} name={item.name} />
-           })
+          this.state.moviesData[1].name
+       /*  // eslint-disable-next-line
+          this.state.moviesData.map(item=> {
+            <MoviesList key={item.cityId} name={item.name} ></MoviesList>
+           }) */
         }
       </div>
     )
   }
 }
+
+
+
+/*  class MoviesList extends Component {
+   render () {
+     let { name} =this.props
+    return (
+      <div>
+        wwwwwwwwwwwwwwwwwwwwwww
+        <h1>{name}</h1>
+      </div>
+    )
+  }
+} */

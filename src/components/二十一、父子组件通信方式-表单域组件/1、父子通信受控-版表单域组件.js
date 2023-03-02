@@ -40,9 +40,9 @@ export default class App extends Component {
     console.log('得到用户名密码:',this.state.userName,this.state.password);
   }
   cancel () {
-     this.setState({
-        userName:'',
-        password:''
-      })
+    this.setState({
+      userName: '',
+      password: ''
+    })
   }
 }
