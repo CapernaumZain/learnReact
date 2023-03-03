@@ -394,11 +394,50 @@ import React, { Component } from 'react'
   1、状态提升(中间人模式)
     React中的状态提升概括来说,就是将多个组件需要共享的状态提升到它们最近的父组件上.在父组件上改变这个状态然后通过props分发给子组件。
   2、发布订阅模式实现(推荐)
-    并非react特有,js中为了实现两个不同模块通信的一种功能
-  3、content状态树传参
+    并非react特有,js中为了实现两个不同模块通信的一种功能(在订阅用户中调用订阅方法,在发布用户中调用发布方法/先订阅后才能发布)
+    *定义发布订阅模式
+    var bus = {
+      *调度中心
+      list: [],
+      *订阅方法
+      subscribe (callBack) {
+        this.list.push(callBack)
+      },
+      *发布方法
+      publish (text) {
+        this.list.forEach(callBack => {
+          callBack&&callBack(text)
+        })
+      }
+    }
+  3、context方案
+    *1.创建context对象【官方提供】
+      ?const GlobalContext = React.createContext()
+    *2.创建供应商组件
+      ?<GlobalContext.Provider value={{
+        ?phone:'22222222222',
+        ?name:this.state.name,
+        ?changeName:(val)=>{
+          ?this.state.name:val
+        }
+      ?}}>
+        ?render中的div标签
+      ?</GlobalContext.Provider>
+    *3.让组件成为消费者(覆盖组件中的div标签并使用</GlobalContext.Consumer>标签,子组件均能访问供应商组件中的value)
+      ?<GlobalContext.Consumer>
+        ?{
+        ?(value)=>{
+          ?return(
+            !<div onClick={()=>{
+              !this.value.changeName(info)
+            !}}>{value.phone}</div>
+          ?)
+        ?}
+        ?}
+      ?</GlobalContext.Consumer>
 
-
-
+!二十三、React中的插槽(1.为了复用。2.一定程度上减少父子组件通信。)
+  1、
 
 
 

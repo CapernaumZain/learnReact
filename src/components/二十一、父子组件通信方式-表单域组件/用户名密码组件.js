@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-/*
-!1、父子通信受控-版表单域组件
+
+//!1、父子通信受控-版表单域组件
 export default class Field extends Component {
   render() {
     return (
@@ -14,9 +14,9 @@ export default class Field extends Component {
     )
   }
 }
- */
 
-export default class Field extends Component {
+
+/* export default class Field extends Component {
   state = {
     value:''
   }
@@ -37,4 +37,4 @@ export default class Field extends Component {
       </div>
     )
   }
-}
+} */
