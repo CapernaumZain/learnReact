@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 
-class child extends Component {
+class Child extends Component {
   render () {
     return (
       <div className=''>
-      child
+      {this.props.children}
     </div>
     )
   }
 }
-export default class slot extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
-        <child>
+        <Child>
           <div>
-            ssssssssssss
+            插槽应该显示的内容
           </div>
-        </child>
+        </Child>
       </div>
     )
   }

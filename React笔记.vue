@@ -293,7 +293,7 @@ TODO:setstate接受第二个参数,第二个参数是回调函数,状态和dom�
 
 !十七、betterScroll(列表平滑滚动效果)
  ?npm i better-scroll
- ?import BetterScrall from 'better-scroll'
+ ?import BetterScroll from 'better-scroll'
  ?new BetterScrall('.divClassName')
 
  !十八、属性(props)实现组件【复用】以及组件之间的【通信】
@@ -437,7 +437,32 @@ import React, { Component } from 'react'
       ?</GlobalContext.Consumer>
 
 !二十三、React中的插槽(1.为了复用。2.一定程度上减少父子组件通信。)
-  1、
+  *在父组件中的子组件标签中放置要插入的内容
+  ?1、<child><div>插槽中的内容</div></child>
+  *在子组件中使用{this.props.children}占位就可以显示“插槽中的内容”
+  ?2、<div>{this.props.children}</div>
+
+!二十四、生命周期
+ *将要把状态加载到DOM中(初始化数据)
+ ?UNSAFE_componentsWillMount(){}
+ *已经把状态加载到DOM中(数据请求/BetterScroll)
+ ?componentsDidMount(){}
+ *正在加载状态
+ ?render(){}
+ *是否进行更新
+ ?shouldComponentsUpdate(oldVal,oldState){
+  ?return false/true
+ ?}
+ *DOM更新完成后
+ ?componentsDidUpdate(){
+  todoDOM更新后的操作
+ }
+ *子组件接收最新父组件的属性值
+ ?UNSAFE_componentWillReceiveProps(newVal){
+   todo最先活得父组件传来的属性，可以利用属性进行ajax或者逻辑处理
+   todo把属性转换成孩子自己的状态
+ }
+
 
 
 
