@@ -10,10 +10,12 @@ export default class App extends Component {
       {
         id: 1,
         title:'电影'
-      },{
+      },
+      {
         id: 2,
         title:'影院'
-      },{
+      },
+      {
         id: 3,
         title:'我的'
       }
