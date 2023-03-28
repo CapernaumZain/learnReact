@@ -86,7 +86,7 @@ TODO:index.js中导入APP必须大写首字母
 ?class Header extends Component {
   ?render(){
   ?return(
-  ?<dvi>
+  ?<div>
     ?<p>嵌套的类Header组件</p>
   ?</div>
     )
@@ -334,7 +334,7 @@ TODO:类属性
   }
 *属性和状态
 ?相似点:
-*都是纯is对象,都会触发render更新,都具有确定性 (状态/属性相同，结果相同)
+*都是纯js对象,都会触发render更新,都具有确定性 (状态/属性相同，结果相同)
 ?不同点:
 *1.属性能从父组件获取，状态不能
 *2.属性可以由父组件修改，状态不能
@@ -375,7 +375,7 @@ import React, { Component } from 'react'
       <h1>登录页</h1>
         <input type="text" value={this.state.userName} onChange={(evt)=>{
          this.setState({
-          userName:event.target.value
+          userName:evt.target.value
          })
         }}/>
         <button onClick={()=>{}}>登录</button>
@@ -465,8 +465,60 @@ import React, { Component } from 'react'
  *销毁阶段(在删除组件之前进行清理操作,比如计时器和事件监听器)
  todo 事件解绑(组件销毁后,将窗口的绑定事件同时销毁)、定时器清除可以在这个钩子函数中做
  ?componentWillUnmount(){
-  
+
  }
+
+!二十五、React中性能优化
+1、shouldComponentUpdate
+[手动优化方案]
+2、PureComponent
+[PureComponent会帮你比较新props 跟旧的props,新的state和老的state (值相等,或者对象含有相同的属性、且属性值相等 ),
+决定shouldcomponentUpdate 返回true 或者false,从而决定要不要呼叫 render function。]
+todo注意
+todo如果你的 state 或 props 永远都会变，那 PureCpmponent 并不会比较快,因为shallowEqual 也需要花时间
+
+!二十六、轮播图案例
+
+!二十七、React Hooks
+
+1、使用hooks理由:
+(1).高阶组件为了复用，导致代码层级复杂。
+(2).生命周期的复杂。
+(3).写成functional组件,无状态组件,因为需要状态,又改成了class,成本高。
+
+2、useState(保存组件状态)
+todo:让函数式立马拥有自己的状态
+const [state,setstate] = usestate(initialstate)
+
+3、useEffect(处理副作用)和useLayoutEffect (同步执行副作用)
+todo:Function Component 不存在生命周期,所以不要把Cass Component 的生命周期概念搬过来试图对号入座。
+todo:不要对 Dependencies 撒谎,如果你明明使用了某个变量,却没有申明在依赖中,你等于向 React 撒了谎,后果就是,当依赖的变量改变时,useEffect 也不会再次执行,eslint会报警告
+todo:Preview页面改造成函数式组件,在路径上从id=1切换到d=2也会自动重新加载,比class组件方便
+
+
+4、useCallback(记忆函数)
+todo:记住调用的函数,放入缓存中,再次调用时从内存中调用。【防止因为组件重新渲染，导致方法被重新创建，起到缓存作用 只有第二个参数 变化才重新声明一次】
+const changeVlaue=useCallback(
+  ()=>{
+    函数表达式
+  },[]
+)
+
+5、useMemo(记忆组件)
+6、useRef(保存引用值)
+const useref=useRef()
+<input ref={useref}></input>
+7、useContext(实现跨级通信方便)
+
+
+!二十八、路由引入
+一个针对React而设计的路由解决方案、可以友好的帮你解决eact components 到UR1之间的同步映射关系
+todo:路由是根据不同的 url 地址展示不同的内容或页面
+1、路由安装
+ *npm install react-router-dom@5
+2、使用路由
+
+3、重定向
 
 
 
