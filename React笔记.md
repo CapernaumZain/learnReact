@@ -592,5 +592,32 @@ const useref=useRef()
  npm install react-router-dom@5
  ```
 ## 2、使用路由
-
+### ①、导入路由库：import {HashRouter} from 'react-router-dom'(会让使用的组件在地址栏中带一个#)
+### ②、在render中使用<HashRouter></HashRouter>
+### ③、引入Route:import {Route} from 'react-router-dom'
+### ④、在<HashRouter></HashRouter>中使用<Route>:<HashRouter><Route path='/films' components={加载的组件}/>
 ## 3、重定向
+### ①、引入Redirect:import { Redirect} from 'react-router-dom'
+### ②、使用:在无法找到路由后加载 <Redirect from='/' to='/footer' exact></Redirect>
+### ③、解决每次跳转路由后跳回重定向路由的问题：
+  * (1.)导入Switch:import {Switch}from 'react-router-dom'。
+  * (2.)使用Switch：只渲染匹配到的第一个路由
+    ```JS
+    <div>
+        <HashRouter>
+          <Switch>
+            <Route path='/header' component={Header}></Route>
+            <Route path='/center' component={Center}></Route>
+            <Route path='/footer' component={Footer}></Route>
+            {/* 模糊匹配 */}
+            {/* exact精确定向匹配(即当路径为'/'时才加载重定向) */}
+            <Redirect from='/' to='/footer' exact></Redirect>
+            <Route component={NotFind}></Route>
+          </Switch>
+        </HashRouter>
+    </div>
+    ```
+## 4、嵌套路由
+## 5、声明式导航/编程式导航
+  ①、声明式导航
+    (1、)
