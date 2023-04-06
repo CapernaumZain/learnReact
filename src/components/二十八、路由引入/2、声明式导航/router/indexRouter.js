@@ -5,10 +5,10 @@ import Center from '../views/Center'
 import Footer from '../views/Footer'
 import NotFind from '../views/NotFind'
 
-export default function indexRouter() {
+export default function indexRouter(props) {
   return (
     <HashRouter>
-          { this.props.children }
+          { props.children }
           <Switch>
             <Route path='/header' component={Header}></Route>
             <Route path='/center' component={Center}></Route>
