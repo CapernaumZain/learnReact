@@ -76,16 +76,13 @@ export default App
 
 # 六、组件的创建(函数组件)
 ```js
-function App(){
-  return(
+export function Name(){
+  return (
     <div>
-      <div>
-      <p>这是函数式组件内容</p>
-      </div>
+      <h1>这是函数式组件</h1>
     </div>
   )
 }
-export default App
 ```
 
 # 七、嵌套组件
@@ -621,3 +618,25 @@ const useref=useRef()
 ## 5、声明式导航/编程式导航
   ①、声明式导航
     (1、)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 面试题
+## 1、为什么多个 JSX 标签需要被一个父元素包裹？
+- JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，你不能在一个函数中返回多个对象，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 Fragment 来包裹。
+## 2、
