@@ -620,6 +620,67 @@ const useref=useRef()
     (1、)
 
 
+# # # # # # # # # # # # # # # # # # # #官网学习案例# # # # # # #  # # # # #  # # # #  # # # # # # #
+
+# 向数组中添加元素（创建一个新数组，不修改原始数组）
+<button onClick={()=>{
+  setArtists([
+    ...artists,
+    {id:nextId++,
+    name:name}
+  ])
+}}>
+添加
+</button>
+
+# 在数组中删除某个元素（过滤删除的元素）
+  <ul>
+  {List.map(e=>{
+<li>
+  <button onClick={()=>{
+setArtists(
+  artists.filter(a=>{
+    a.id !== e.id
+  })
+)
+  }}>删除</button>
+</li>
+  })}
+  </ul>
+
+# 改变数组中的某些或全部元素(用 map() 创建一个新数组)---所有圆形图向下
+  function handleClick() {
+    const nextShapes = shapes.map(shape => {
+      if (shape.type === 'square') {
+        // 不作改变
+        return shape;
+      } else {
+        // 返回一个新的圆形，位置在下方 50px 处
+        return {
+          ...shape,
+          y: shape.y + 50,
+        };
+      }
+    });
+    // 使用新的数组进行重渲染
+    setShapes(nextShapes);
+  }
+
+# 替换数组中的元素（要替换一个元素，请使用 map 创建一个新数组。）
+ function handleIncrementClick(index) {
+    const nextCounters = counters.map((c, i) => {
+      if (i === index) {
+        // 递增被点击的计数器数值
+        return c + 1;
+      } else {
+        // 其余部分不发生变化
+        return c;
+      }
+    });
+    setCounters(nextCounters);
+  }
+
+  # 
 
 
 
